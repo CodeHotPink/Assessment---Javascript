@@ -38,6 +38,17 @@
 <button id='signIn' class='signInText'>Log In</button>
 <script>
   "use strict";
+  const logInOutButton = document.querySelector('#signIn')
+  function logInOut(evt) {
+    let htmlText = logInOutButton.innerHTML;
+    if (htmlText === 'Log In') {
+      logInOutButton.innerHTML = 'Log Out';
+    } else {
+      logInOutButton.innerHTML = 'Log In';
+    }
+    console.dir(evt);
+  }
+  logInOutButton.addEventListener('click', logInOut);
   // code here for above-problem
 </script>
 
@@ -68,6 +79,12 @@
 
 <script>
   "use strict";
+  const colorFormButton = document.querySelector('#prevent-form-submission-button');
+  function colorFormAlert(evt) {
+    evt.preventDefault();
+    alert('That\'s a cool color!');
+  }
+  colorFormButton.addEventListener('click',colorFormAlert)
   // code here for above problem
 </script>
 
@@ -100,8 +117,19 @@
   <p class='colorChange'>This paragraph should change color.</p>
 </div>
 
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script>
   "use strict";
+  function changeBackgroundColor(evt) {
+    const color = String(this.id);
+    const areas = $('.colorChange');
+    for (let area of areas) {
+      area.style.background = color;
+    }
+    console.div(evt);
+  }
+  $('#red').on('click', changeBackgroundColor);
+  $('#blue').on('click', changeBackgroundColor);
   // code here for above problem
 </script>
 
@@ -129,8 +157,17 @@
   <img src="https://s-media-cache-ak0.pinimg.com/236x/d3/e9/fc/d3e9fc222c9bd0d12e0ff126acf7df00.jpg" alt="Adorbz" id="kittenz-rule">
 </fieldset>
 
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script>
   "use strict";
+  const image = $('#kittenz-rule');
+  function changeImage(evt) {
+    image.attr('src', 'https://i.pinimg.com/originals/52/5e/d8/525ed85ab3bb05ba876e7af13c0af483.jpg');
+    image.attr('height', 278);
+    image.attr('width', 236);
+  }
+  image.on('dblclick', changeImage);
+
   // code here for above problem
 </script>
 
@@ -178,8 +215,24 @@ You may use <b>plain JavaScript</b> and <b>jQuery</b> for this problem. Do not u
   <b>Result: </b><span id='result'></span>
 </p>
 
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script>
   "use strict";
+  function calculateFactorial(evt) {
+    let numberInput = Number($('#number').val());
+    let factorialNumber = 1;
+    while (numberInput > 0) {
+      if (numberInput == 1) {
+        factorialNumber *= 1;
+        numberInput -= 1;
+      } else {
+      factorialNumber *= numberInput;
+      numberInput -= 1;
+    }}
+    console.log(factorialNumber);
+    $('#result').html(factorialNumber);
+  }
+  $('#calculate').on('click', calculateFactorial);
   // code here for above problem
 </script>
 
@@ -238,7 +291,19 @@ You may use <b>plain JavaScript</b> and <b>jQuery</b> for this problem. Do not u
     <li><b>Population:</b> <span id='population'>Unknown</span></li>
   </ul>
 </p>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script>
+  function showInfo(evt) {
+    $.get('https://swapi.co/api/planets/1/', (results) => {
+      console.log(results);
+      console.log(results.climate);
+      $('#climate').html(results.climate);
+      $('#terrain').html(results.terrain);
+      $('#population').html(results.population);
+    });
+
+  }
+  $('#getInfo').on('click', showInfo);
   // code here for above problem
 </script>
 
