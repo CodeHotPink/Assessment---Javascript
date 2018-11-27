@@ -46,7 +46,6 @@
     } else {
       logInOutButton.innerHTML = 'Log In';
     }
-    console.dir(evt);
   }
   logInOutButton.addEventListener('click', logInOut);
   // code here for above-problem
@@ -229,7 +228,6 @@ You may use <b>plain JavaScript</b> and <b>jQuery</b> for this problem. Do not u
       factorialNumber *= numberInput;
       numberInput -= 1;
     }}
-    console.log(factorialNumber);
     $('#result').html(factorialNumber);
   }
   $('#calculate').on('click', calculateFactorial);
@@ -295,8 +293,6 @@ You may use <b>plain JavaScript</b> and <b>jQuery</b> for this problem. Do not u
 <script>
   function showInfo(evt) {
     $.get('https://swapi.co/api/planets/1/', (results) => {
-      console.log(results);
-      console.log(results.climate);
       $('#climate').html(results.climate);
       $('#terrain').html(results.terrain);
       $('#population').html(results.population);
